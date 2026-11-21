@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coding Helper</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <div class="layout">
+    <aside>
+      <div class="logo">
+        <span>&lt;/&gt;</span>
+        <div>
+          <h1>Coding Helper</h1>
+          <p>Generate · Explain · Debug · Optimize</p>
+        </div>
+      </div>
+      <div id="status" class="status">Checking…</div>
+      <div class="modes">
+        <button type="button" class="mode active" data-mode="generate">Generate</button>
+        <button type="button" class="mode" data-mode="explain">Explain</button>
+        <button type="button" class="mode" data-mode="debug">Debug</button>
+        <button type="button" class="mode" data-mode="optimize">Optimize</button>
+        <button type="button" class="mode" data-mode="fix">Ask</button>
+      </div>
+      <button type="button" id="clearBtn" class="ghost">Clear history</button>
+    </aside>
+
+    <main>
+      <form id="assistForm">
+        <div class="top-row">
+          <label>
+            Language
+            <select id="language">
+              <option>python</option>
+              <option>javascript</option>
+              <option>typescript</option>
+              <option>java</option>
+              <option>csharp</option>
+              <option>go</option>
+              <option>rust</option>
+              <option>cpp</option>
+              <option>sql</option>
+              <option>html</option>
+            </select>
+          </label>
+          <p class="hint" id="modeHint">Generate a complete runnable solution.</p>
+        </div>
+
+        <label for="prompt">Task / question</label>
+        <textarea id="prompt" rows="3" maxlength="8000" placeholder="Write a FastAPI endpoint that validates emails…" required></textarea>
+
+        <label for="code">Optional code (for explain / debug / optimize)</label>
+        <textarea id="code" class="code" rows="8" maxlength="20000" placeholder="Paste code here…"></textarea>
+
+        <div class="actions">
+          <button type="submit" id="runBtn">
+            <span class="label">Run assistant</span>
+            <span class="spinner hidden"></span>
+          </button>
+        </div>
+      </form>
+
+      <p id="toast" class="toast hidden"></p>
+
+      <section class="output">
+        <div class="output-head">
+          <h2>Output</h2>
+          <button type="button" id="copyBtn" class="ghost small">Copy</button>
+        </div>
+        <pre id="output"><code>Results appear here.</code></pre>
+      </section>
+    </main>
+  </div>
+  <script src="/static/app.js"></script>
+</body>
+</html>
